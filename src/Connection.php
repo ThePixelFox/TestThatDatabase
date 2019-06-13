@@ -46,7 +46,8 @@ class Connection
         $this->initParser();
     }
 
-    private function init() {
+    private function init()
+    {
         if (!$this->Connected) {
             $this->openConnection();
         }
@@ -55,18 +56,24 @@ class Connection
 
     /// Internal SQL parser handling
 
-    private function driverAvailable($driver)
+    public function driverAvailable($driver)
     {
-        $driverFile = dirname(__DIR__) . '/Drivers/' . $driver . '.php';
+        $driverFile = __DIR__ . '/Drivers/' . $driver . '.php';
         return file_exists($driverFile);
     }
 
-    private function initParser() {
+    public function initParser()
+    {
         if ($this->driverAvailable($this->Driver)) {
             $namespace = 'TestThatDatabase\\Drivers\\';
-            $classname = $namespace . $this->Driver . '.php';
+            $classname = $namespace . $this->Driver;
+            $class = new $classname();
 
-            $this->Parser = new $classname();
+            if ($class instanceof Driver) {
+                $this->Parser = $class;
+            } else {
+                throw new Exception('Requested driver does not implement required interfaces!');
+            }
         } else {
             throw new Exception('Driver ' . $this->Driver . ' currently not available!');
         }
@@ -75,11 +82,12 @@ class Connection
 
     /// Database connection handling
 
-    private function openConnection()
+    public function openConnection()
     {
         try {
             // Open PDO connection
-            self::$Connection = new PDO($this->Driver . ':host=' . $this->Host . ';dbname=' . $this->DbName . $databaseEncodingenc, $this->User, $this->User);
+            $databaseEncodingenc = "; charset=" . $this->Encoding;
+            self::$Connection = new PDO($this->Driver . ':host=' . $this->Host . ';dbname=' . $this->DbName . $databaseEncodingenc, $this->User, $this->Pass);
 
             // Update connection status
             $this->Connected = true;
@@ -91,7 +99,7 @@ class Connection
         }
     }
 
-    private function closeConnection()
+    public function closeConnection()
     {
         $this->Connected = false;
         self::$Connection = null;
@@ -104,45 +112,57 @@ class Connection
     {
         $this->closeConnection();
         $this->Host = $host;
+        return $this;
     }
 
     public function setUser($user)
     {
         $this->closeConnection();
         $this->User = $user;
+        return $this;
     }
 
     public function setPassword($pass)
     {
         $this->closeConnection();
         $this->Pass = $pass;
+        return $this;
     }
 
     public function setDatabase($dbname)
     {
         $this->closeConnection();
         $this->DbName = $dbname;
+        return $this;
     }
 
     public function setEncoding($encoding)
     {
         $this->closeConnection();
         $this->Encoding = $encoding;
+        return $this;
     }
 
     public function setPort($port)
     {
         $this->closeConnection();
         $this->Port = $port;
+        return $this;
     }
 
     public function setDriver($driver)
     {
         $this->closeConnection();
         $this->Driver = $driver;
+        return $this;
     }
 
     /// Public API
+
+    public function isConnected()
+    {
+        return $this->Connected;
+    }
 
     public function tableExists($table)
     {

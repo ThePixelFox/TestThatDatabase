@@ -2,16 +2,16 @@
 
 namespace TestThatDatabase;
 
-class TestThatDatabase
+trait DatabaseTestTrait
 {
-    private $Connections = [];
+    private static $Connections = [];
 
     public function addConnection($name)
     {
         // Check, if name already taken
         if (!isset($this->Connections[$name])) {
-            $this->Connections[$name] = new Connection($name);
-            return $this->Connections[$name];
+            self::$Connections[$name] = new Connection($name);
+            return self::$Connections[$name];
         } else {
             throw new Exception('Name for connection already taken!');
         }
@@ -19,8 +19,8 @@ class TestThatDatabase
 
     public function getConnection($name)
     {
-        if (isset($this->Connections[$name])) {
-            return $this->Connections[$name];
+        if (isset(self::$Connections[$name])) {
+            return self::$Connections[$name];
         } else {
             return false;
         }
