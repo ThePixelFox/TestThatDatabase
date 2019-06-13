@@ -11,7 +11,8 @@
   ],
   "autoload": {
     "psr-4": {
-      "TestThatDatabase\\": "src/"
+      "TestThatDatabase\\": "src/",
+      "TestThatDatabase\\Tests\\": "tests/"
     }
   },
   "require": {
