@@ -1,0 +1,15 @@
+{
+  "name": "crystlbrd/test-that-database",
+  "description": "A helper plugin to deal with testing database related code in PHPUnit.",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Emanuel Bitkov (crstylbrd)",
+      "email": "emanuel@bitkov.de",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "phpunit/phpunit": "8.2.1"
+  }
+}
