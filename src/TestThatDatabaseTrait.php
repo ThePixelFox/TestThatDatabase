@@ -2,6 +2,8 @@
 
 namespace crystlbrd\TestThatDatabase;
 
+use crystlbrd\TestThatDatabase\Interfaces\IConnection;
+
 trait TestThatDatabaseTrait
 {
     /**
@@ -38,11 +40,48 @@ trait TestThatDatabaseTrait
 
     private function createTable(string $table): TableCreator
     {
-        # TODO
+        # TODO v1
     }
 
     private function fill(string $table): TableFiller
     {
-        # TODO
+        # TODO v1
+    }
+
+    /// ASSERTIONS
+
+    public static function assertTableCreated()
+    {
+        # TODO v1
+    }
+
+    public static function assertTableDeleted()
+    {
+        # TODO v1
+    }
+
+    public static function assertTableAltered()
+    {
+        # TODO v1
+    }
+
+    public static function assertRowInserted()
+    {
+        # TODO v1
+    }
+
+    public static function assertRowUpdated()
+    {
+        # TODO v1
+    }
+
+    public static function assertRowSelected()
+    {
+        # TODO v1
+    }
+
+    public static function assertRowDeleted()
+    {
+        # TODO v1
     }
 }

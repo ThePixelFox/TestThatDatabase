@@ -15,6 +15,6 @@ class Table
 
     public function from($ressource): self
     {
-        # TODO
+        # TODO v1
     }
 }

@@ -2,7 +2,7 @@
 
 namespace crystlbrd\TestThatDatabase;
 
-use crystlbrd\TestThatDatabase\Exceptions\TestThatDatabaseException;
+use crystlbrd\TestThatDatabase\Interfaces\IConnection;
 
 class ConnectionsRelay
 {
@@ -13,16 +13,16 @@ class ConnectionsRelay
 
     public function __get(string $name): ?IConnection
     {
-        # TODO
+        # TODO v1
     }
 
     public function add(IConnection $connection, array $options = []): void
     {
-        # TODO
+        # TODO v1
     }
 
     public function remove(string $name): void
     {
-        # TODO
+        # TODO v1
     }
 }

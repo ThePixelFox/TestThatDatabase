@@ -1,5 +1,8 @@
 <?php
 
-namespace crystlbrd\TestThatDatabase;
+namespace crystlbrd\TestThatDatabase\Interfaces;
 
-interface IConnection {}
+interface IConnection
+{
+    # TODO v1
+}

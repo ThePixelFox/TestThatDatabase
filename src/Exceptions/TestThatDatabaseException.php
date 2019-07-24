@@ -4,4 +4,7 @@ namespace crystlbrd\TestThatDatabase\Exceptions;
 
 use Exception;
 
-class TestThatDatabaseException extends Exception {}
+class TestThatDatabaseException extends Exception
+{
+    # TODO v1
+}
