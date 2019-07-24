@@ -11,8 +11,8 @@
   ],
   "autoload": {
     "psr-4": {
-      "TestThatDatabase\\": "src/",
-      "TestThatDatabase\\Tests\\": "tests/"
+      "crystlbrd\\TestThatDatabase\\": "src/",
+      "crystlbrd\\TestThatDatabase\\Tests\\": "tests/"
     }
   },
   "require": {

@@ -2,6 +2,6 @@
 
 namespace crystlbrd\TestThatDatabase;
 
-class Connection implements IConnection {
-
+interface IDriver
+{
 }

@@ -1,13 +1,9 @@
 <?php
 
-namespace TestThatDatabase\Drivers;
+namespace crystlbrd\TestThatDatabase\Drivers;
 
-use TestThatDatabase\Driver;
+use crystlbrd\TestThatDatabase\IDriver;
 
-class mysql extends Driver
+class mysql implements IDriver
 {
-    public function tableExists($tableName)
-    {
-        // TODO: Implement tableExists() method.
-    }
 }
